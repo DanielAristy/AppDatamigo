@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AppDatamigo</string>
+    <string name="facturas">Listado de Facturas</string>
 </resources>
