@@ -2,7 +2,9 @@ package com.example.appdatamigo.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.appdatamigo.R;
 import com.example.appdatamigo.utilities.ActionBarUtil;
@@ -22,9 +24,15 @@ public class MainActivity extends AppCompatActivity {
         actionBarUtil.setToolBar(getString(R.string.facturas));
     }
 
+    public void goToRegistroFactura(View view) {
+        Intent factura = new Intent(this,FacturaActivity.class);
+        startActivity(factura);
+    }
+
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
     }
+
 }

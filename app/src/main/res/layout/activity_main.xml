@@ -6,7 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".view.MainActivity">
 
+    <com.example.appdatamigo.widgets.MovableFloatingActionButton
+
+        android:id="@+id/btnGuardar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="?attr/actionModePasteDrawable"
+        android:backgroundTint="@color/colorAccent"
+        android:clickable="true"
+        android:onClick="goToRegistroFactura"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/listViewFacturas"
+        app:layout_constraintTop_toTopOf="@+id/listViewFacturas"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="?attr/actionModePasteDrawable"
+        tools:ignore="OnClick" />
+
     <ListView
+        android:id="@+id/listViewFacturas"
         android:layout_width="409dp"
         android:layout_height="729dp"
         android:layout_marginStart="8dp"
