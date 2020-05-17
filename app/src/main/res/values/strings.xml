@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">AppDatamigo</string>
     <string name="facturas">Listado de Facturas</string>
-    <string name="factura">Factura</string>
+    <string name="factura">Configuracion de facturas</string>
+    <string name="valor_factura">Valor Factura</string>
+    <string name="nit_proveedor">Nit Proveedor</string>
+    <string name="guardar">Guardar</string>
+    <string name="registrar_factura">Registrar Factura</string>
+    <string name="sin_facturas">No existen facturas configuradas en el sistema</string>
+    <string name="requerido">Requerido</string>
+    <string name="succesfully">La informacion se ha guardado satisfactoriamente</string>
 </resources>

@@ -8,9 +8,11 @@ import com.example.appdatamigo.persistencia.Tabla;
 
 import java.util.Date;
 
+import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
+@Data
 @Entity(tableName = Tabla.DOCUMENTO)
 @NoArgsConstructor
 public class Documento {
@@ -19,16 +21,8 @@ public class Documento {
     @NonNull
     @ColumnInfo(name = "idDocumento")
     private Integer idDocumento;
-    @ColumnInfo(name = "nombreProveedor")
-    private String  nombreProveedor;
-    @ColumnInfo(name = "fecha")
-    private Date fecha;
     @ColumnInfo(name = "nitProveedor")
     private String nitProveedor;
-    @ColumnInfo(name = "total")
-    private Double total;
-    @ColumnInfo(name = "observacion")
-    private String observacion;
-    @ColumnInfo(name = "")
-    private TipoDocumento tipoDocumento;
+    @ColumnInfo(name = "precio")
+    private Double precio;
 }
