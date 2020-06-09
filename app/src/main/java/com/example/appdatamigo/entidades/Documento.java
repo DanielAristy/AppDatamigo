@@ -6,6 +6,8 @@ import androidx.room.PrimaryKey;
 
 import com.example.appdatamigo.persistencia.Tabla;
 
+import java.io.Serializable;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -13,7 +15,7 @@ import lombok.NonNull;
 @Data
 @Entity(tableName = Tabla.DOCUMENTO)
 @NoArgsConstructor
-public class Documento {
+public class Documento implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
     @NonNull

@@ -17,4 +17,5 @@
     <string name="valor">Valor</string>
     <string name="fecha">Fecha</string>
     <string name="tomar_foto">Tomar Foto</string>
+    <string name="id_factura">Id Factura</string>
 </resources>

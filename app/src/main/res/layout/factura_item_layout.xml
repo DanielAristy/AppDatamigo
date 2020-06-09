@@ -34,10 +34,10 @@
                 android:background="@color/fondoPDF"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.067"
+                app:layout_constraintVertical_bias="0.062"
                 app:srcCompat="@drawable/factura" />
 
             <TextView
@@ -89,7 +89,7 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <Button
-                android:id="@+id/detalles"
+                android:id="@+id/btnDetalles"
                 android:layout_width="107dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="30dp"
@@ -99,7 +99,6 @@
                 android:ellipsize="start"
                 android:fontFamily="sans-serif"
                 android:text="@string/detalles"
-                android:onClick="update"
                 android:textAlignment="center"
                 android:textColor="#fff"
                 android:visibility="visible"
