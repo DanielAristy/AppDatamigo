@@ -18,4 +18,6 @@
     <string name="fecha">Fecha</string>
     <string name="tomar_foto">Tomar Foto</string>
     <string name="id_factura">Id Factura</string>
+    <string name="eliminar_factura">Se elimino correctamente la factura</string>
+    <string name="editar_factura">Se edito correctamente la factura</string>
 </resources>

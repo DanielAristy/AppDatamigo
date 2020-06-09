@@ -3,7 +3,9 @@ package com.example.appdatamigo.view;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.appdatamigo.R;
 import com.example.appdatamigo.entidades.Documento;
@@ -51,11 +53,23 @@ public class DetallesActivity extends AppCompatActivity {
 
     }
 
+    public void deleteFactura(View view) {
+        Toast.makeText(this,R.string.eliminar_factura,Toast.LENGTH_SHORT).show();
+        finish();
+    }
+
+    public void editFactura(View view) {
+        Toast.makeText(this,R.string.editar_factura,Toast.LENGTH_SHORT).show();
+        finish();
+    }
+
+
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
     }
+
 
 
 }
