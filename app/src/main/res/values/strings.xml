@@ -9,4 +9,12 @@
     <string name="sin_facturas">No existen facturas configuradas en el sistema</string>
     <string name="requerido">Requerido</string>
     <string name="succesfully">La informacion se ha guardado satisfactoriamente</string>
+    <string name="detalles">Detalles</string>
+    <string name="imagen_factura">Imagen Factura</string>
+    <string name="foto">Foto</string>
+    <string name="seleccionar_imagen">Seleccionar Imagen</string>
+    <string name="ingresar_datos">"Ingresar Datos "</string>
+    <string name="valor">Valor</string>
+    <string name="fecha">Fecha</string>
+    <string name="tomar_foto">Tomar Foto</string>
 </resources>

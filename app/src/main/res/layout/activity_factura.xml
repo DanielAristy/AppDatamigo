@@ -1,78 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="fill_vertical"
     tools:context=".view.FacturaActivity">
 
-    <EditText
-        android:id="@+id/nitProveedor"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:ems="10"
-        android:hint="@string/nit_proveedor"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.0" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/valorFactura"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:ems="10"
-        android:hint="@string/valor_factura"
-        android:inputType="numberDecimal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nitProveedor"
-        app:layout_constraintVertical_bias="0.0" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btnGuardar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:onClick="guardar"
-        android:text="@string/guardar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/valorFactura"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="OnClick" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:gravity="center"
-        android:text="@string/registrar_factura"
-        android:textColor="#000"
-        android:textSize="27sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+            <TextView
+                android:id="@+id/txtImagenFactura"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/imagen_factura"
+                android:textAlignment="center"
+                android:textSize="25dp"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:id="@+id/imgFactura"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="20dp"
+                android:background="@color/fondoPDF"
+                app:srcCompat="@drawable/factura" />
+
+            <Button
+                android:id="@+id/btnTomarFoto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="220dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/boton_elipse"
+                android:backgroundTint="#8BC34A"
+                android:onClick="loadImage"
+                android:text="@string/tomar_foto"
+                tools:ignore="OnClick" />
+
+            <Button
+                android:id="@+id/btnSeleccionarFoto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="200dp"
+                android:layout_marginTop="-50dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/boton_elipse"
+                android:backgroundTint="#8BC34A"
+                android:onClick="selectImage"
+                android:text="@string/seleccionar_imagen"
+                tools:ignore="OnClick" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/ingresar_datos"
+                android:textColor="@color/black"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                android:layout_marginTop="25dp"
+                android:textAlignment="center"
+                />
+
+            <EditText
+                android:id="@+id/nitProveedor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:hint="@string/nit_proveedor"
+                android:inputType="textPersonName"
+                />
+
+            <EditText
+                android:id="@+id/precio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:hint="@string/valor"
+                android:inputType="numberDecimal" />
+
+            <Button
+                android:id="@+id/btnFecha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="20dp"
+                android:onClick="tomarFoto"
+                android:background="@drawable/boton_elipse"
+                android:backgroundTint="#009688"
+                android:text="@string/fecha"/>
+
+            <TextView
+                android:id="@+id/txtPickerFecha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="150dp"
+                android:layout_marginRight="50dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:paddingBottom="10dp"
+                android:layout_marginTop="-40dp"/>
+
+            <Button
+                android:id="@+id/btnRegistrarFactura"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="8dp"
+                android:onClick="guardar"
+                android:background="@drawable/boton_elipse"
+                android:text="@string/guardar"
+                tools:ignore="OnClick" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

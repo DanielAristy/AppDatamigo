@@ -19,7 +19,7 @@ import com.example.appdatamigo.persistencia.dao.DocumentoDAO;
         )
 public abstract class DataBaseHelper extends RoomDatabase {
 
-    public static final int VERSION_BASE_DATOS = 1;
+    public static final int VERSION_BASE_DATOS = 2;
     public static final String NOMBRE_BASE_DATOS = "datamigo";
     private static DataBaseHelper instance;
 

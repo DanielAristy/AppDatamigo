@@ -7,6 +7,7 @@ import androidx.room.Query;
 
 import com.example.appdatamigo.entidades.Documento;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Dao
