@@ -55,7 +55,7 @@ public class    DocumentoAdapter extends BaseAdapter implements Filterable {
             holder = new ViewHolder(convertView);
             convertView.setTag(holder);
         }
-//        holder.imagen.setImageResource(Integer.parseInt(listaFacturasOut.get(position).getImagen()));
+//        holder.imagen.setImageURI(listaFacturasOut.get(position).getImagen());
         holder.nitProveedor.setText(listaFacturasOut.get(position).getNitProveedor());
         holder.txtFecha.setText(listaFacturasOut.get(position).getFecha());
         holder.precio.setText( listaFacturasOut.get(position).getPrecio()+"");

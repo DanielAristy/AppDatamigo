@@ -8,11 +8,14 @@ import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -49,9 +52,9 @@ public class FacturaActivity extends AppCompatActivity implements View.OnClickLi
     int month, day, year;
     private ActionBarUtil actionBarUtil;
     DataBaseHelper db;
-    private static final int COD_SELECCIONA = 10;
-    private static final int COD_FOTO = 20;
-    private String fotoPath;
+    private static final int COD_SELECCIONA = 1;
+    private static final int ABRIR_CAMARA = 2;
+    private String absolutePath = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,22 +73,23 @@ public class FacturaActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     public void guardar(View view) {
-        String imagen = imgFactura.toString();
+//        String imagen = imgFactura.toString();
         String nit = nitProveedor.getText().toString();
         Double total = toDouble(precio.getText().toString());
         String fecha = txtPickerFecha.getText().toString();
 
         if (validarInformacion(nit, total)){
-            Documento documento = getDocumento(imagen ,nit, total, fecha);
+            Documento documento = getDocumento(nit, total, fecha);
             new InsercionDocumento().execute(documento);
             finish();
         }
+        absolutePath = "";
     }
 
-    private Documento getDocumento(String imagen,String nit,
+    private Documento getDocumento(String nit,
                                    Double total, String fecha) {
         Documento documento = new Documento();
-        documento.setImagen(imagen);
+//        documento.setImagen(imagen);
         documento.setNitProveedor(nit);
         documento.setPrecio(total);
         documento.setFecha(fecha);
@@ -136,6 +140,7 @@ public class FacturaActivity extends AppCompatActivity implements View.OnClickLi
 
     /**
      * https://www.youtube.com/watch?v=zw4SMOprdbA&t=417s
+     * https://www.youtube.com/watch?v=QC4pI-o4KcU
      * Guardar las imagenes en una direccion del dispositivo*/
 
 
@@ -143,16 +148,47 @@ public class FacturaActivity extends AppCompatActivity implements View.OnClickLi
         tomarFoto();
     }
 
+    private void tomarFoto() {
+        Intent tomarFotoIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+        if (tomarFotoIntent.resolveActivity(getPackageManager()) != null){
+            File foto = null;
+
+            try {
+                foto = crearFoto();
+
+            }catch (Exception e) {
+                e.printStackTrace();
+            }
+            if (foto != null){
+                Uri fotoUri = FileProvider.getUriForFile(FacturaActivity.this,
+                        "com.example.appdatamigo", foto);
+                tomarFotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, fotoUri);
+                startActivityForResult(tomarFotoIntent, ABRIR_CAMARA);
+            }
+        }
+    }
+
+    private File crearFoto() throws IOException {
+
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String nombreArchivo = "factura" + timeStamp;
+
+        File directorio = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File fotoArchivo = File.createTempFile(
+                nombreArchivo,
+                ".jpg",
+                directorio
+        );
+
+        absolutePath = fotoArchivo.getAbsolutePath();
+        return fotoArchivo;
+    }
+
     public void selectImage(View view) {
         cargarImagen();
     }
 
-    private void tomarFoto(){
-        Intent tomarFoto = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(tomarFoto, COD_FOTO);
-
-
-    }
     private void cargarImagen() {
         Intent cargarFoto = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(cargarFoto, COD_SELECCIONA);
@@ -166,23 +202,19 @@ public class FacturaActivity extends AppCompatActivity implements View.OnClickLi
             case COD_SELECCIONA:
                 if (resultCode == RESULT_OK){
                     Uri miPath = data.getData();
-                    fotoPath = miPath.toString();
                     imgFactura.setImageURI(miPath);
                 }
                 break;
 
-            case COD_FOTO:
+            case ABRIR_CAMARA:
                 if (resultCode == RESULT_OK){
-                    Bundle extras = data.getExtras();
-                    Bitmap imagenBitmap = (Bitmap) extras.get("data");
-                    imgFactura.setImageBitmap(imagenBitmap);
+                    Uri uri = Uri.parse(absolutePath);
+                    imgFactura.setImageURI(uri);
                 }
                 break;
         }
     }
-
-
-
+//    https://www.youtube.com/watch?v=QC4pI-o4KcU Video para tomar la foto
     @Override
     public void onClick(View view) {
 
