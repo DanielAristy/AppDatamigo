@@ -20,4 +20,8 @@
     <string name="id_factura">Id Factura</string>
     <string name="eliminar_factura">Se elimino correctamente la factura</string>
     <string name="editar_factura">Se edito correctamente la factura</string>
+    <string name="menu_principal">Menu principal</string>
+    <string name="bienvenido">Bienvenido (a) escoja una opción</string>
+    <string name="registro_documentos">Registro Documentos</string>
+    <string name="congifuracion_tipo_documento">Congurar tipos de documentos</string>
 </resources>

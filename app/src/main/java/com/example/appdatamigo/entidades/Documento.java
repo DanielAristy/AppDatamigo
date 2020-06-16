@@ -30,4 +30,5 @@ public class Documento implements Serializable {
     @ColumnInfo(name = "precio")
     private double precio;
 
+
 }
