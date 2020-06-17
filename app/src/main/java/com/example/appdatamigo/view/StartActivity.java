@@ -24,7 +24,12 @@ public class StartActivity extends AppCompatActivity {
     }
 
     public void goToMainActivity(View view) {
-        Intent factura = new Intent(this,MainActivity.class);
-        startActivity(factura);
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToRegistrarTipos(View view) {
+        Intent intent = new Intent(this,TipoDocumentoActivity.class);
+        startActivity(intent);
     }
 }

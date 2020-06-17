@@ -24,4 +24,5 @@
     <string name="bienvenido">Bienvenido (a) escoja una opción</string>
     <string name="registro_documentos">Registro Documentos</string>
     <string name="congifuracion_tipo_documento">Congurar tipos de documentos</string>
+    <string name="listado_tipos">Tipos de documentos</string>
 </resources>
