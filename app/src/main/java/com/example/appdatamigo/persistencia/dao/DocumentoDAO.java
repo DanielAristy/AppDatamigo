@@ -4,6 +4,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import com.example.appdatamigo.entidades.Documento;
 
@@ -18,6 +19,9 @@ public interface DocumentoDAO {
 
     @Delete
     void delete(Documento documento);
+
+    @Update
+    void update(Documento documento);
 
     @Query("DELETE FROM documento WHERE idDocumento=:idDocumento")
     void deleteByIdTarifa(Integer idDocumento);

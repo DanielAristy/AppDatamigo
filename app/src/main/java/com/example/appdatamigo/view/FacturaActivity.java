@@ -25,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.appdatamigo.R;
+import com.example.appdatamigo.adapter.DocumentoAdapter;
 import com.example.appdatamigo.entidades.Documento;
 import com.example.appdatamigo.persistencia.room.DataBaseHelper;
 import com.example.appdatamigo.utilities.ActionBarUtil;

@@ -24,6 +24,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class DetallesActivity extends AppCompatActivity {
+
     @BindView(R.id.btnDelete)
     ImageView btnDelete;
     @BindView(R.id.btnEdit)
@@ -40,6 +41,10 @@ public class DetallesActivity extends AppCompatActivity {
     TextView txtNitProveedor;
     @BindView(R.id.txtValorFactura)
     TextView txtValorFactura;
+    @BindView(R.id.txtFecha)
+    TextView txtFecha;
+    @BindView(R.id.fecha)
+    TextView fecha;
     @BindView(R.id.txtValores)
     TextView txtValores;
     @BindView(R.id.editNit)
@@ -79,6 +84,7 @@ public class DetallesActivity extends AppCompatActivity {
             idDocumento.setText(documento.getIdDocumento().toString());
             nitProveedor.setText(documento.getNitProveedor());
             valor.setText(documento.getPrecio()+"");
+            fecha.setText(documento.getFecha());
         }
     }
 
@@ -110,8 +116,6 @@ public class DetallesActivity extends AppCompatActivity {
             editNit.setText(documento.getNitProveedor());
             editValor.setText(documento.getPrecio()+"");
         }
-
-//        finish();
     }
 
     private void showComponentsEdit() {
@@ -130,9 +134,10 @@ public class DetallesActivity extends AppCompatActivity {
         txtIdFactura.setVisibility(View.GONE);
         txtNitProveedor.setVisibility(View.GONE);
         txtValorFactura.setVisibility(View.GONE);
+        txtFecha.setVisibility(View.GONE);
+        fecha.setVisibility(View.GONE);
 
     }
-
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -142,9 +147,46 @@ public class DetallesActivity extends AppCompatActivity {
 
     /**Editar los datos*/
     public void editarFactura(View view) {
-        Intent intent = new Intent(this,MainActivity.class);
-        startActivity(intent);
-        Toast.makeText(this,R.string.editar_factura,Toast.LENGTH_SHORT).show();
+        int idDocumentoEditado = Integer.parseInt(idDocumento.getText().toString());
+        String nit = editNit.getText().toString();
+        Double valor = toDouble(editValor.getText().toString());
+        String date = fecha.getText().toString();
+
+        if (validarInformacion(nit, valor)){
+            Documento documento = getDocumento(idDocumentoEditado, nit, valor, date);
+            new UpdateAsyncTask().execute(documento);
+            finish();
+        }
+
+    }
+
+    private Documento getDocumento(int idDocumentoEditado, String nit, Double valor, String date) {
+        Documento documento = new Documento();
+        documento.setIdDocumento(idDocumentoEditado);
+        documento.setNitProveedor(nit);
+        documento.setPrecio(valor);
+        documento.setFecha(date);
+
+        return  documento;
+    }
+
+    private boolean validarInformacion(String nit, Double valor) {
+        boolean esValido = true;
+        if ("".equals((nit))){
+            editNit.setError(getString(R.string.requerido));
+            esValido = false;
+        }
+
+        if (valor == 0){
+            editValor.setError(getString(R.string.requerido));
+            esValido = false;
+        }
+
+        return esValido;
+    }
+
+    private Double toDouble(String valor) {
+        return "".equals(valor)? 0: Double.parseDouble(valor);
     }
 
 
@@ -161,6 +203,25 @@ public class DetallesActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             Toast.makeText(context,R.string.eliminar_factura,Toast.LENGTH_SHORT).show();
+            super.onPostExecute(aVoid);
+        }
+    }
+
+    private class UpdateAsyncTask extends AsyncTask<Documento,Void,Void> {
+        @Override
+        protected Void doInBackground(Documento... documentos) {
+            DataBaseHelper.getSimpleDB(getApplicationContext())
+                    .getDocumentoDAO()
+                    .update(documentos[0]);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            Toast.makeText(getApplicationContext(),
+                    R.string.editar_factura,
+                    Toast.LENGTH_SHORT)
+                    .show();
             super.onPostExecute(aVoid);
         }
     }
