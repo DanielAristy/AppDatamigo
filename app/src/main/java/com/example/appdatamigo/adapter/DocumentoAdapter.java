@@ -67,7 +67,7 @@ public class    DocumentoAdapter extends BaseAdapter implements Filterable {
         holder.nitProveedor.setText(listaFacturasOut.get(position).getNitProveedor());
         holder.txtFecha.setText(listaFacturasOut.get(position).getFecha());
         holder.precio.setText( listaFacturasOut.get(position).getPrecio()+"");
-        holder.setOnClickListeners(listaFacturasOut.get(position).getIdDocumento());
+        holder.setOnClickListeners(position);
 
         return convertView;
     }
@@ -89,15 +89,15 @@ public class    DocumentoAdapter extends BaseAdapter implements Filterable {
         TextView txtFecha;
         @BindView(R.id.btnDetalles)
         Button btnDetalles;
-        private int idFactura;
+        protected int posicion;
 
         public ViewHolder(View view) {
             ButterKnife.bind(this,view);
         }
 
-        private void setOnClickListeners(@NonNull Integer idDocumento){
+        private void setOnClickListeners(Integer idDocumento){
             btnDetalles.setOnClickListener(this);
-            this.idFactura = idDocumento;
+            this.posicion = idDocumento;
         }
 
         @Override
@@ -111,13 +111,21 @@ public class    DocumentoAdapter extends BaseAdapter implements Filterable {
 
         private void enviarDatos() {
 
-            Documento documento = listaFacturasOut.get(idFactura - 1);
+            Documento documento = listaFacturasOut.get(getPosicion());
             Intent intent = new Intent(context, DetallesActivity.class);
             Bundle bundle = new Bundle();
             bundle.putSerializable("factura",documento);
             intent.putExtras(bundle);
             context.startActivity(intent);
-            this.idFactura = 0;
+            setPosicion(0);
+        }
+
+        public int getPosicion() {
+            return posicion;
+        }
+
+        public void setPosicion(int posicion) {
+            this.posicion = posicion;
         }
     }
 }

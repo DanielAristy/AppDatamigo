@@ -11,15 +11,18 @@ import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteOpenHelper;
 
 import com.example.appdatamigo.entidades.Documento;
+import com.example.appdatamigo.entidades.TipoDocumento;
 import com.example.appdatamigo.persistencia.dao.DocumentoDAO;
+import com.example.appdatamigo.persistencia.dao.TipoDocumentoDAO;
 
 @Database(entities = {
-        Documento.class},
+        Documento.class,
+        TipoDocumento.class},
         version = DataBaseHelper.VERSION_BASE_DATOS, exportSchema = false
         )
 public abstract class DataBaseHelper extends RoomDatabase {
 
-    public static final int VERSION_BASE_DATOS = 2;
+    public static final int VERSION_BASE_DATOS = 3;
     public static final String NOMBRE_BASE_DATOS = "datamigo";
     private static DataBaseHelper instance;
 
@@ -41,5 +44,6 @@ public abstract class DataBaseHelper extends RoomDatabase {
     }
 
     public abstract DocumentoDAO getDocumentoDAO();
+    public abstract TipoDocumentoDAO getTipoDocumentoDAO();
 
 }

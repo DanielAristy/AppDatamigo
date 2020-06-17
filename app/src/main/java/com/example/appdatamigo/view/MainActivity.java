@@ -53,8 +53,8 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public void goToRegistroFactura(View view) {
-        Intent factura = new Intent(this,FacturaActivity.class);
-        startActivity(factura);
+        Intent intent = new Intent(this,FacturaActivity.class);
+        startActivity(intent);
     }
 
     @Override

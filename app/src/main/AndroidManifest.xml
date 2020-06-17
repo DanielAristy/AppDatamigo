@@ -16,7 +16,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.TipoDocumentoActivity"></activity>
+        <activity android:name=".view.RegistroTipoActivity"></activity>
+        <activity android:name=".view.TipoDocumentoActivity" />
         <activity android:name=".view.DetallesActivity" />
         <activity android:name=".view.FacturaActivity" />
         <activity android:name=".view.MainActivity" />

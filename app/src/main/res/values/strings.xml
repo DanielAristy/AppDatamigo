@@ -25,4 +25,9 @@
     <string name="registro_documentos">Registro Documentos</string>
     <string name="congifuracion_tipo_documento">Congurar tipos de documentos</string>
     <string name="listado_tipos">Tipos de documentos</string>
+    <string name="registrar_tipo_documento">Registrar tipo</string>
+    <string name="nombre_tipo_documento">Digite el nombre del tipo</string>
+    <string name="sigla">Digite la sigla del tipo</string>
+    <string name="registrar">Registrar</string>
+    <string name="tipo_documento">Tipo de Documento</string>
 </resources>

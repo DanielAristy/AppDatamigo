@@ -28,7 +28,7 @@ public class StartActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void goToRegistrarTipos(View view) {
+    public void goToListadoTipos(View view) {
         Intent intent = new Intent(this,TipoDocumentoActivity.class);
         startActivity(intent);
     }
