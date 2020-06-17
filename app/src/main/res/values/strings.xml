@@ -30,4 +30,5 @@
     <string name="sigla">Digite la sigla del tipo</string>
     <string name="registrar">Registrar</string>
     <string name="tipo_documento">Tipo de Documento</string>
+    <string name="editar_Campos">Editar nit y valor</string>
 </resources>

@@ -7,7 +7,7 @@
     tools:context=".view.RegistroTipoActivity">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/txtIdFactura"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -38,7 +38,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/txtIdFactura"
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
